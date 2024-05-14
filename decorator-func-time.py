@@ -1,5 +1,6 @@
 import time
 
+
 def func_time_decorator(func):
     def wrapper(*args, **kwargs):
         with open('test.txt', 'w') as log_file:
@@ -10,43 +11,48 @@ def func_time_decorator(func):
 
     return wrapper
 
+
 @func_time_decorator
 def calculate_fibonacci(quantity):
-    fibonacciSequence = [0, 1]
+    fibonacci_sequence = [0, 1]
 
     for number in range(quantity - 2):
-        fibonacciSequence.append(fibonacciSequence[-1] + fibonacciSequence[-2])
+        fibonacci_sequence.append(fibonacci_sequence[-1] + fibonacci_sequence[-2])
 
-    return fibonacciSequence
+    return fibonacci_sequence
+
 
 @func_time_decorator
 def calculate_prime_numbers(quantity):
-    primeNumbersSequence = []
+    prime_numbers_sequence = []
 
     for number in range(1000000):
-       if _is_prime_number(number):
-           primeNumbersSequence.append(number)
-       if len(primeNumbersSequence) == quantity:
-           break
+        if _is_prime_number(number):
+            prime_numbers_sequence.append(number)
+        if len(prime_numbers_sequence) == quantity:
+            break
 
-    return primeNumbersSequence
+    return prime_numbers_sequence
+
 
 def _is_prime_number(number):
     counter = number
-    isPrime = False
+    is_prime = False
 
     while counter > 1:
         counter = counter - 1
         if number % counter == 0:
             break
         if counter == 2:
-            isPrime = True
+            is_prime = True
 
-    return isPrime
+    return is_prime
+
 
 @func_time_decorator
 def raise_exception():
     raise NameError('Error')
 
-#calculate_fibonacci(100)
-#calculate_prime_numbers(1000)
+
+# calculate_fibonacci(100)
+# calculate_prime_numbers(1000)
